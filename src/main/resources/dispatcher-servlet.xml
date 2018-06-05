@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.njsky.*.controller"/>
+
+    <mvc:annotation-driven/>
+
+    <!-- Swagger配置 -->
+   <!-- <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
+    <mvc:resources mapping="/webjars/**"
+                   location="classpath:/META-INF/resources/webjars/" />-->
+
+    <mvc:annotation-driven/>
+       <!-- <mvc:message-converters>
+            &lt;!&ndash; @ResponseBody乱码问题，将StringHttpMessageConverter的默认编码设为UTF-8 &ndash;&gt;
+            <beans:bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <beans:constructor-arg value="UTF-8"/>
+            </beans:bean>
+        </mvc:message-converters>-->
+
+
+    <mvc:resources mapping="/js/**" location="/asset/js/"></mvc:resources>
+    <mvc:resources mapping="/index/js/**" location="/index/asset/js/"></mvc:resources>
+    <mvc:resources mapping="/admin/js/**" location="/admin/asset/js/"></mvc:resources>
+    <mvc:resources mapping="/css/**" location="/asset/css/"></mvc:resources>
+    <mvc:resources mapping="/index/css/**" location="/index/asset/css/"></mvc:resources>
+    <mvc:resources mapping="/admin/css/**" location="/admin/asset/css/"></mvc:resources>
+    <mvc:resources mapping="/fonts/**" location="/asset/fonts/"></mvc:resources>
+    <mvc:resources mapping="/index/fonts/**" location="/index/asset/fonts/"></mvc:resources>
+    <mvc:resources mapping="/admin/fonts/**" location="/admin/asset/fonts/"></mvc:resources>
+    <mvc:resources mapping="/img/**" location="/asset/img/"></mvc:resources>
+    <mvc:resources mapping="/index/img/**" location="/index/asset/img/"></mvc:resources>
+    <mvc:resources mapping="/admin/img/**" location="/admin/asset/img/"></mvc:resources>
+    <mvc:resources mapping="/index/module/**" location="/index/module/"></mvc:resources>
+
+    <mvc:interceptors>
+        <bean class="com.njsky.kernel.shiro.ShiroDispacher">
+            <property name="blackList">
+                <list>
+                    <value>pay.html</value>
+                    <value>index.html</value>
+                    <value>shopcart.html</value>
+                </list>
+            </property>
+        </bean>
+    </mvc:interceptors>
+
+</beans>
